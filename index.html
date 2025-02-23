@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Responsive Design</title>
+  </head>
+  <body>
+    <header>
+      <h1>TaskBuddy</h1>
+      <ul>
+        <li id="sport">Sports</li>
+        <li id="random-task">Random-task</li>
+        <li id="party">Party</li>
+      </ul>
+      <button class="add-new-task">Add</button>
+    </header>
+    <main>
+      <ul>
+        <li>
+          <input type="checkbox" id="" />My-task <button class="del">Del</button
+          ><button class="edit">Edit</button>
+        </li>
+        <li><input type="checkbox" id="" />My-task2</li>
+        <li><input type="checkbox" id="" />My-task3</li>
+      </ul>
+    </main>
+    <div class="popup">
+      <input type="text" id="Task-popup" placeholder="Write your task" />
+      <input
+        type="text"
+        id="description"
+        placeholder="Write your description"
+      />
+      <button class="submit-task">Add</button>
+      <select id="category">
+        <option value="random-task">Random-task</option>
+        <option value="sports">Sports</option>
+        <option value="party">Party</option>
+      </select>
+    </div>
+    <div class="reward-popup">description</div>
+    <script src="index.js"></script>
+  </body>
+</html>
