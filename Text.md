@@ -114,3 +114,13 @@ CSS for styling and layout.
 Responsive design principles.
 
 Let me know if you need further assistance! 😊
+
+   <!-- <li>
+          <div class="input-box">
+            <input type="checkbox" id="" />
+            <h2>title</h2>
+          </div>
+          <div class="buttons">
+            <button class="del">Del</button><button class="edit">Edit</button>
+          </div>
+        </li> -->
