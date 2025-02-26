@@ -1,5 +1,6 @@
 import { showSideBar } from "./sideBar.js";
 import { showAddSection } from "./showPopup.js";
+import { randomQuote } from "./randomQuote.js";
 
 const ulList = document.querySelector(".ul-list");
 const userInp = document.querySelector("#Task-popup");
@@ -7,7 +8,8 @@ const showAddSectionBtn = document.querySelector(".add-new-task");
 const sideBarBtn = document.querySelector(".open-side-bar");
 const closeBtn = document.querySelector(".close-popup");
 const addTaskBtn = document.querySelector(".submit-task");
-const delBtn = document.querySelectorAll(".del");
+
+const checkbox = document.querySelectorAll("check");
 
 sideBarBtn.addEventListener("click", showSideBar);
 showAddSectionBtn.addEventListener("click", showAddSection);
@@ -20,10 +22,10 @@ function updateUi() {
   ulList.innerHTML = "";
   arr.forEach((element) => {
     let li = document.createElement("li");
-    li.setAttribute("id", element.id);
+    li.setAttribute("data-li-id", element.id);
     li.innerHTML = `  
         <div class="input-box">
-            <input type="checkbox" id = "${element.id}" />
+            <input type="checkbox" class = "check" data-checkbox-id = "${element.id}" />
             <h2>${element.value}</h2>
           </div>
           <div class="buttons">
@@ -44,10 +46,10 @@ function createLi() {
       id: Date.now(),
     };
     let li = document.createElement("li");
-    li.setAttribute("id", userObj.id);
+    li.setAttribute("data-li-id", userObj.id);
     li.innerHTML = `  
         <div class="input-box">
-            <input type="checkbox" id = "${userObj.id}" />
+            <input type="checkbox" class = "check" data-checkbox-id = "${userObj.id}" />
             <h2>${userObj.value}</h2>
           </div>
           <div class="buttons">
@@ -74,3 +76,16 @@ ulList.addEventListener("click", function (event) {
     updateUi();
   }
 });
+ulList.addEventListener("click", function (event) {
+  if (event.target.classList.contains("check")) {
+    let taskId = event.target.dataset.checkboxId;
+    taskId = Number(taskId);
+    let targetLi = document.querySelector(`[data-li-id = "${taskId}"]`);
+    targetLi.classList.toggle("checked");
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  e.key === "Enter" ? createLi() : null;
+});
+console.log(randomQuote());

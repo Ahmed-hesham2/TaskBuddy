@@ -235,6 +235,8 @@ main ul li .buttons .del {
 }
 
 .checked {
+  background-color: #adadad;
+  text-decoration: line-through;
 }
 
 @media (max-width: 768px) {
