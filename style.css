@@ -108,7 +108,6 @@ main ul li .input-box h2 {
   font-size: 1.8rem;
   word-break: break-word;
   overflow-wrap: break-word;
-  max-width: 80%;
 }
 main ul li .buttons button {
   padding: 10px;
