@@ -8,8 +8,8 @@ const showAddSectionBtn = document.querySelector(".add-new-task");
 const sideBarBtn = document.querySelector(".open-side-bar");
 const closeBtn = document.querySelector(".close-popup");
 const addTaskBtn = document.querySelector(".submit-task");
-
-const checkbox = document.querySelectorAll("check");
+const qouteBox = document.querySelector(".quote-box");
+const qouteBoxText = document.querySelector(".quote-text");
 
 sideBarBtn.addEventListener("click", showSideBar);
 showAddSectionBtn.addEventListener("click", showAddSection);
@@ -76,16 +76,33 @@ ulList.addEventListener("click", function (event) {
     updateUi();
   }
 });
-ulList.addEventListener("click", function (event) {
+ulList.addEventListener("click", async function (event) {
   if (event.target.classList.contains("check")) {
     let taskId = event.target.dataset.checkboxId;
     taskId = Number(taskId);
     let targetLi = document.querySelector(`[data-li-id = "${taskId}"]`);
+    let targetLiCheckBox = document.querySelector(
+      `[data-li-id = "${taskId}"] input`
+    );
     targetLi.classList.toggle("checked");
+
+    await randomQuote()
+      .then((res) => res.json())
+      .then((res) => {
+        qouteBoxText.innerText = res[0].quote;
+      });
+
+    document.querySelector(".close-quote").addEventListener("click", () => {
+      qouteBox.classList.remove("active");
+    });
+    if (targetLiCheckBox.checked === false) {
+      return;
+    } else {
+      qouteBox.classList.toggle("active");
+    }
   }
 });
 
 window.addEventListener("keydown", (e) => {
   e.key === "Enter" ? createLi() : null;
 });
-console.log(randomQuote());
